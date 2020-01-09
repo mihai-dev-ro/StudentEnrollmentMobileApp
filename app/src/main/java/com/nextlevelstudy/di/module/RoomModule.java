@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.room.Room;
 
 import com.nextlevelstudy.database.StudentEnrollmentDb;
+import com.nextlevelstudy.database.dao.StudentDao;
 import com.nextlevelstudy.database.dao.UniversityDao;
 
 import javax.inject.Singleton;
@@ -25,6 +26,12 @@ public class RoomModule {
   @Provides
   UniversityDao provideUniversityDao(StudentEnrollmentDb db){
     return db.universityDao();
+  }
+
+  @Singleton
+  @Provides
+  StudentDao provideStudentDao(StudentEnrollmentDb db){
+    return db.studentDao();
   }
 
 }

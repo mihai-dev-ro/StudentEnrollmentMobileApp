@@ -19,14 +19,11 @@ public class ApiResponse<T> {
   public final T body;
   @Nullable
   public final String errorMessage;
-  @NonNull
-  public final Map<String, String> links;
 
   public ApiResponse(Throwable error) {
     code = 500;
     body = null;
     errorMessage = error.getMessage();
-    links = Collections.emptyMap();
   }
 
   public ApiResponse(retrofit2.Response<T> response) {

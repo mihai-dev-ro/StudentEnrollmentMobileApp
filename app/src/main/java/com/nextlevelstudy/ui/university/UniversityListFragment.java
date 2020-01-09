@@ -1,7 +1,6 @@
 package com.nextlevelstudy.ui.university;
 
 import android.content.Context;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.LayoutInflater;
@@ -84,7 +83,7 @@ public class UniversityListFragment extends Fragment implements Injectable {
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+//    ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
     setHasOptionsMenu(true);
 
     DeviceUtils.setTranslucentStatusBar(getActivity().getWindow(), R.color.colorPrimaryDark);

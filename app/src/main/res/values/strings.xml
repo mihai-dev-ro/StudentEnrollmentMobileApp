@@ -35,4 +35,5 @@
     <string name="university_list_error_loading">Sunt erori la incarcarea datelor</string>
     <string name="item_search_university_text_search_field">Caută universitați</string>
     <string name="hint_search">caută universitați</string>
+    <string name="error_failed_login">Autentificarea a eșuat</string>
 </resources>

@@ -13,7 +13,7 @@ import com.nextlevelstudy.models.University;
 import java.util.List;
 
 @Dao
-public class UniversityDao {
+public abstract class UniversityDao {
 
   @Query("SELECT * FROM University")
   public abstract LiveData<List<University>> findAll();

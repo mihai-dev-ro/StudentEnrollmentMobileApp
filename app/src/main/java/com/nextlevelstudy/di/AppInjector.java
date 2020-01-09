@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.nextlevelstudy.StudentEnrollmentApp;
+import com.nextlevelstudy.di.component.DaggerAppComponent;
 
 import dagger.android.AndroidInjection;
 import dagger.android.support.AndroidSupportInjection;
@@ -17,11 +18,11 @@ import dagger.android.support.HasSupportFragmentInjector;
 public class AppInjector {
   private AppInjector() {}
 
-  public static void init(StudentEnrollmentApp studentEnrollmentAppp) {
-    DaggerAppComponent.builder().application(studentEnrollmentAppp)
-      .build().inject(studentEnrollmentAppp);
+  public static void init(StudentEnrollmentApp studentEnrollmentApp) {
+    DaggerAppComponent.builder().application(studentEnrollmentApp)
+      .build().inject(studentEnrollmentApp);
 
-    studentEnrollmentAppp.registerActivityLifecycleCallbacks(
+    studentEnrollmentApp.registerActivityLifecycleCallbacks(
       new Application.ActivityLifecycleCallbacks() {
 
       @Override

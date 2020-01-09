@@ -27,14 +27,13 @@
         tools:text="@string/university_list_error_loading" />
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="?attr/actionBarSize"
         tools:layoutManager="GridLayoutManager"
-        tools:listitem="@layout/item_movie_layout"
-        tools:spanCount="3" />
+        tools:listitem="@layout/fragment_university_list_item" />
 
 
     <FrameLayout

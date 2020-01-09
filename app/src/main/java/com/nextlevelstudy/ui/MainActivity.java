@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     // Add project list fragment if this is first creation
     if (savedInstanceState == null) {
-      navigationController.navigateToUniversityListFragment();
+      navigationController.navigateToLogin();
     }
 
     // Being here means we are in animation mode

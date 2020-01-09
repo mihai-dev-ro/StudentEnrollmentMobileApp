@@ -26,6 +26,8 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
 
     //TODO:: Add method to check if data should be saved. This should apply for search data.
     LiveData<ResultType> dbSource = loadFromDb();
+    // force fetch from network
+
     result.addSource(dbSource, data -> {
       result.removeSource(dbSource);
       if (shouldFetch(data)) {
@@ -43,6 +45,7 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     }
   }
 
+  @MainThread
   private void fetchFromNetwork(final LiveData<ResultType> dbSource) {
 
     LiveData<ApiResponse<RequestType>> apiResponse = createCall();

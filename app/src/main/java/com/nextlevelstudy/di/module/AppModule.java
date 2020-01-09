@@ -1,5 +1,8 @@
 package com.nextlevelstudy.di.module;
 
+import com.nextlevelstudy.services.StudentWebService;
+import com.nextlevelstudy.services.UniversityWebService;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -14,8 +17,16 @@ public class AppModule {
 
   @Provides
   @Singleton
-  TmdbService provideTmdbService(Retrofit retrofit) {
-    return retrofit.create(TmdbService.class);
+  StudentWebService provideStudentWebService(Retrofit retrofit) {
+    return retrofit.create(StudentWebService.class);
   }
+
+  @Provides
+  @Singleton
+  UniversityWebService provideUniversityWebService(Retrofit retrofit) {
+    return retrofit.create(UniversityWebService.class);
+  }
+
+
 
 }

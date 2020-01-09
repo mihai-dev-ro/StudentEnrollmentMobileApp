@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.nextlevelstudy.di.qualifiers.ViewModelKey;
 import com.nextlevelstudy.view_models.ProjectViewModelFactory;
+import com.nextlevelstudy.view_models.login.LoginViewModel;
 import com.nextlevelstudy.view_models.university.SearchViewModel;
-import com.nextlevelstudy.view_models.university.UniversityDetailViewModel;
 import com.nextlevelstudy.view_models.university.UniversityListViewModel;
 
 import dagger.Binds;
@@ -28,8 +28,8 @@ public abstract class ViewModelModule {
 
   @Binds
   @IntoMap
-  @ViewModelKey(UniversityDetailViewModel.class)
-  abstract ViewModel bindMovieDetailViewModel(UniversityDetailViewModel movieDetailViewModel);
+  @ViewModelKey(LoginViewModel.class)
+  abstract ViewModel bindLoginViewModel(LoginViewModel loginViewModel);
 
   @Binds
   abstract ViewModelProvider.Factory bindViewModelFactory(ProjectViewModelFactory projectViewModelFactory);

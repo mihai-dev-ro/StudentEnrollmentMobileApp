@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
+import com.nextlevelstudy.database.StudentEnrollmentDb;
 import com.nextlevelstudy.database.dao.UniversityDao;
 import com.nextlevelstudy.models.University;
 import com.nextlevelstudy.models.UniversityListWSResult;
@@ -24,25 +25,25 @@ import javax.inject.Singleton;
 @Singleton
 public class UniversityRepo {
 
-  private UniversityWebService mUniversityWebService;
-  private TmdbDb mTmdbDb;
-  private UniversityDao mUniversityDao;
-  private final AppExecutors mAppExecutors;
+  private UniversityWebService universityWebService;
+  private UniversityDao universityDao;
+  private AppExecutors appExecutors;
 
   @Inject
-  UniversityRepo(AppExecutors appExecutors, UniversityWebService universityWebService,
+  UniversityRepo(AppExecutors appExecutors,
+                 UniversityWebService universityWebService,
                  UniversityDao universityDao) {
 
-    mUniversityWebService = universityWebService;
-    mAppExecutors = appExecutors;
-    mUniversityDao = universityDao;
+    universityWebService = universityWebService;
+    appExecutors = appExecutors;
+    universityDao = universityDao;
   }
 
   public LiveData<Resource<List<University>>> getTopUniversities() {
-    return new NetworkBoundResource<List<University>, UniversityListWSResult>(mAppExecutors) {
+    return new NetworkBoundResource<List<University>, UniversityListWSResult>(appExecutors) {
       @Override
       protected void saveCallResult(@NonNull UniversityListWSResult item) {
-        mUniversityDao.insertUniversities(item.getResults());
+        universityDao.insertUniversities(item.getResults());
       }
 
       @Override
@@ -53,23 +54,23 @@ public class UniversityRepo {
       @NonNull
       @Override
       protected LiveData<List<University>> loadFromDb() {
-        return mUniversityDao.findAll();
+        return universityDao.findAll();
 
       }
 
       @NonNull
       @Override
       protected LiveData<ApiResponse<UniversityListWSResult>> createCall() {
-        return mUniversityWebService.getTopUniversities();
+        return universityWebService.getTopUniversities();
       }
     }.asLiveData();
   }
 
   public LiveData<Resource<List<University>>> searchUniversity(String query) {
-    return new NetworkBoundResource<List<University>, UniversityListWSResult>(mAppExecutors) {
+    return new NetworkBoundResource<List<University>, UniversityListWSResult>(appExecutors) {
       @Override
       protected void saveCallResult(@NonNull UniversityListWSResult item) {
-        mUniversityDao.insertUniversities(item.getResults());
+        universityDao.insertUniversities(item.getResults());
       }
 
       @Override
@@ -81,13 +82,13 @@ public class UniversityRepo {
       @Override
       protected LiveData<List<University>> loadFromDb() {
         //Fetch from the db
-        return mUniversityDao.searchUniversitiesByNameOrCountryName(query);
+        return universityDao.searchUniversitiesByNameOrCountryName(query);
       }
 
       @NonNull
       @Override
       protected LiveData<ApiResponse<UniversityListWSResult>> createCall() {
-        return mUniversityWebService.searchMovies(query);
+        return universityWebService.searchMovies(query);
       }
     }.asLiveData();
   }

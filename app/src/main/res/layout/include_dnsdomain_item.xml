@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="dns domain"
+    android:textAppearance="?attr/textAppearanceListItem"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:padding="2dp"
+    android:textSize="@dimen/text_size_medium">
+</TextView>
