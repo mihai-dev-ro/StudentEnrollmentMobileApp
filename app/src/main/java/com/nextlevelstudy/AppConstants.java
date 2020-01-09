@@ -17,7 +17,7 @@ public class AppConstants {
   /**
    * Endpoint
    */
-  public static final String BASE_URL = "http://localhost:9000/";
+  public static final String BASE_URL = "https://nextlevelstudy.blink-dev.ro";
 
 
   public static boolean DEBUG = true;
