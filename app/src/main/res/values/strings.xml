@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StudentEnrollmentMobileApp</string>
+    <string name="app_name">Student Enrollment App</string>
     <string name="login_title">SALUTARE</string>
     <string name="login_subtitle">Și bine te-am gasit. \nAutentifică-te aici să poți
         aplica imediat la universitațile dorite</string>
@@ -32,4 +32,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="university_list_title">Lista universiți</string>
+    <string name="university_list_error_loading">Sunt erori la incarcarea datelor</string>
+    <string name="item_search_university_text_search_field">Caută universitați</string>
+    <string name="hint_search">caută universitați</string>
 </resources>
