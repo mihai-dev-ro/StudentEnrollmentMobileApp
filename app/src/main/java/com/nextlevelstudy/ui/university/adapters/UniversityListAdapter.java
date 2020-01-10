@@ -39,7 +39,7 @@ public class UniversityListAdapter
 
     University university = mUniversityList.get(position);
 
-    holder.universityName.setText(university.countryName);
+    holder.universityName.setText(university.name);
     holder.univetsityCountryName.setText(university.countryName);
 
     holder.itemView.setOnClickListener(view -> mUniversityCallback.onClick(university));
@@ -77,6 +77,7 @@ public class UniversityListAdapter
     public UniversityViewHolder(View itemView) {
       super(itemView);
       ButterKnife.bind(this, itemView);
+
 
       this.itemView = itemView;
     }

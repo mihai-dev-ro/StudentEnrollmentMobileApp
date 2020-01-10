@@ -83,12 +83,12 @@ public class UniversityListFragment extends Fragment implements Injectable {
   @Override
   public void onActivityCreated(@Nullable Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-//    ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+    ((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
     setHasOptionsMenu(true);
 
     DeviceUtils.setTranslucentStatusBar(getActivity().getWindow(), R.color.colorPrimaryDark);
 
-    GridLayoutManager gridLayoutManager = new GridLayoutManager(mRecyclerView.getContext(), 3);
+    GridLayoutManager gridLayoutManager = new GridLayoutManager(mRecyclerView.getContext(), 1);
     mRecyclerView.setLayoutManager(gridLayoutManager);
 
     mUniversityListAdapter = new UniversityListAdapter(
@@ -199,7 +199,7 @@ public class UniversityListFragment extends Fragment implements Injectable {
           progressBar.setVisibility(View.GONE);
           errorTextView.setVisibility(View.GONE);
           if (listResource.data != null && listResource.data.size() > 0) {
-            mUniversityList = listResource.data;
+            mUniversityList = listResource.data.subList(0, 100);
             mUniversityListAdapter.setData(listResource.data);
             mUniversityListAdapter.notifyDataSetChanged();
           } else {

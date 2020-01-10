@@ -1,7 +1,5 @@
 package com.nextlevelstudy.view_models.university;
 
-import android.graphics.Movie;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;

@@ -72,6 +72,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:layout_margin="@dimen/margin_mini"
+                    android:textColor="@color/red"
                     tools:text="@string/error_failed_login" />
 
             </RelativeLayout>
@@ -106,7 +108,7 @@
                 android:text="@string/login_btnSignIn"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
-                android:textSize="17sp"/>
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/login_signUp_text"

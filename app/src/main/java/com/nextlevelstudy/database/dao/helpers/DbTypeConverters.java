@@ -14,7 +14,7 @@ public class DbTypeConverters {
     if (data == null) {
       return Collections.emptyList();
     }
-    return Arrays.asList(data.split("|"));
+    return Arrays.asList(data.split("\\|"));
   }
 
   @TypeConverter

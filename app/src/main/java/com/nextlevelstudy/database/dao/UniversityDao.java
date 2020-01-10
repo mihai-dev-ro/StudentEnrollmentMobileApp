@@ -15,7 +15,7 @@ import java.util.List;
 @Dao
 public abstract class UniversityDao {
 
-  @Query("SELECT * FROM University")
+  @Query("SELECT * FROM University LIMIT 100")
   public abstract LiveData<List<University>> findAll();
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -24,7 +24,7 @@ public abstract class UniversityDao {
   @Query("DELETE FROM University")
   public abstract void deleteAll();
 
-  @Query("SELECT * FROM University where name = :name or countryName = :name")
+  @Query("SELECT * FROM University where name = :name or countryName = :name LIMIT 10")
   public abstract LiveData<List<University>> searchUniversitiesByNameOrCountryName(String name);
 
   @Insert(onConflict = OnConflictStrategy.IGNORE)

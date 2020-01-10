@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/centerContent"
     android:visibility="visible"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="4"
-    android:layout_marginLeft="10dp"
+    android:layout_margin="@dimen/margin_mini"
     android:orientation="vertical">
 
     <TextView
@@ -25,5 +25,12 @@
         android:textColor="#676464"
         android:textAppearance="?attr/textAppearanceListItem"
         android:typeface="sans"
+        android:layout_marginTop="@dimen/margin_micro"
         android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_mini"
+        android:background="@android:color/darker_gray"/>
 </LinearLayout>

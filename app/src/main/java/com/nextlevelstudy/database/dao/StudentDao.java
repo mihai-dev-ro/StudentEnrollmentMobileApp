@@ -15,6 +15,6 @@ public abstract class StudentDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   public abstract void insertOrUpdateStudent(StudentWithToken student);
 
-  @Query("SELECT * FROM StudentWithToken where email = :nonsense")
-  public abstract LiveData<StudentWithToken> searchNonsense(String nonsense);
+  @Query("SELECT * FROM StudentWithToken where email = :email LIMIT 1")
+  public abstract LiveData<StudentWithToken> findMyEmail(String email);
 }

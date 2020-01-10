@@ -49,7 +49,7 @@ public class StudentRepo {
       @NonNull
       @Override
       protected LiveData<StudentWithToken> loadFromDb() {
-        return studentDao.searchNonsense("nonsense");
+        return studentDao.findMyEmail(email);
       }
 
       @NonNull

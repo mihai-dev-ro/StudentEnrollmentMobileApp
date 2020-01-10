@@ -42,8 +42,10 @@ public class AuthInterceptor implements Interceptor {
   public Response intercept(@NonNull Chain chain) throws IOException {
     Request original = chain.request();
 
-    if (original.url().encodedPath().contains("/users/login")&& original.method().equals("post")
-      || (original.url().encodedPath().contains("/users") && original.method().equals("post"))
+    if (original.url().encodedPath().toLowerCase().contains("/users/login") &&
+      original.method().equalsIgnoreCase("post")
+      || (original.url().encodedPath().contains("/users") &&
+      original.method().equalsIgnoreCase("post"))
     ) {
       return  chain.proceed(original);
     }

@@ -1,22 +1,18 @@
 package com.nextlevelstudy.repositories;
 
-import android.graphics.Movie;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
-import com.nextlevelstudy.database.StudentEnrollmentDb;
 import com.nextlevelstudy.database.dao.UniversityDao;
 import com.nextlevelstudy.models.University;
-import com.nextlevelstudy.models.UniversityListWSResult;
 import com.nextlevelstudy.repositories.utils.AppExecutors;
 import com.nextlevelstudy.repositories.utils.NetworkBoundResource;
 import com.nextlevelstudy.services.UniversityWebService;
 import com.nextlevelstudy.services.utils.ApiResponse;
 import com.nextlevelstudy.services.utils.Resource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,16 +30,16 @@ public class UniversityRepo {
                  UniversityWebService universityWebService,
                  UniversityDao universityDao) {
 
-    universityWebService = universityWebService;
-    appExecutors = appExecutors;
-    universityDao = universityDao;
+    this.universityWebService = universityWebService;
+    this.appExecutors = appExecutors;
+    this.universityDao = universityDao;
   }
 
   public LiveData<Resource<List<University>>> getTopUniversities() {
-    return new NetworkBoundResource<List<University>, UniversityListWSResult>(appExecutors) {
+    return new NetworkBoundResource<List<University>, List<University>>(appExecutors) {
       @Override
-      protected void saveCallResult(@NonNull UniversityListWSResult item) {
-        universityDao.insertUniversities(item.getResults());
+      protected void saveCallResult(@NonNull List<University> items) {
+        universityDao.insertUniversities(items);
       }
 
       @Override
@@ -60,17 +56,17 @@ public class UniversityRepo {
 
       @NonNull
       @Override
-      protected LiveData<ApiResponse<UniversityListWSResult>> createCall() {
+      protected LiveData<ApiResponse<List<University>>> createCall() {
         return universityWebService.getTopUniversities();
       }
     }.asLiveData();
   }
 
   public LiveData<Resource<List<University>>> searchUniversity(String query) {
-    return new NetworkBoundResource<List<University>, UniversityListWSResult>(appExecutors) {
+    return new NetworkBoundResource<List<University>, List<University>>(appExecutors) {
       @Override
-      protected void saveCallResult(@NonNull UniversityListWSResult item) {
-        universityDao.insertUniversities(item.getResults());
+      protected void saveCallResult(@NonNull List<University> items) {
+        universityDao.insertUniversities(items);
       }
 
       @Override
@@ -87,7 +83,8 @@ public class UniversityRepo {
 
       @NonNull
       @Override
-      protected LiveData<ApiResponse<UniversityListWSResult>> createCall() {
+      protected LiveData<ApiResponse<List<University>>> createCall() {
+        // todo: not implemented. it retrieves all universities for now
         return universityWebService.searchMovies(query);
       }
     }.asLiveData();

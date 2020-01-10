@@ -78,6 +78,15 @@ public class LoginFragment extends Fragment implements Injectable {
     View view = inflater.inflate(R.layout.fragment_login, container, false);
     ButterKnife.bind(this, view);
 
+    authenticateButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        loginViewModel.authenticate(
+          loginEmail.getText().toString(),
+          loginPassword.getText().toString());
+      }
+    });
+
     return view;
   }
 
@@ -90,13 +99,8 @@ public class LoginFragment extends Fragment implements Injectable {
     // get the view model
     loginViewModel = ViewModelProviders.of(this, viewModelFactory)
       .get(LoginViewModel.class);
-    loginViewModel.getStudent().observe(this, this::handleLoginResponse);
 
-    authenticateButton.setOnClickListener(v -> {
-      loginViewModel.authenticate(
-        loginEmail.getText().toString(),
-        loginPassword.getText().toString());
-    });
+    loginViewModel.getStudent().observe(this, this::handleLoginResponse);
 
     signUp.setOnClickListener(v -> {
       navigationController.navigateToStudentRegistration();

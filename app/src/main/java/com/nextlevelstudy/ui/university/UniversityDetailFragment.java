@@ -78,8 +78,8 @@ public class UniversityDetailFragment extends Fragment implements Injectable {
         super.onActivityCreated(savedInstanceState);
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //((AppCompatActivity) getActivity()).getSupportActionBar().setHomeButtonEnabled(true);
 
         DeviceUtils.setTranslucentStatusBar(getActivity().getWindow(), android.R.color.transparent);
 
@@ -88,14 +88,17 @@ public class UniversityDetailFragment extends Fragment implements Injectable {
         // get the university
         University university = getArguments().getParcelable(BUNDLE_UNIVERSITY);
 
+        universityDetailsName.setText(university.name);
+        universityDetailsCountry.setText(university.countryName);
+
         // set-up the dns domains
         dnsDomainListAdapter = new ArrayAdapter<String>(this.getActivity(),
-          android.R.layout.simple_list_item_1, android.R.id.text1, university.dnsDomains);
+          android.R.layout.simple_list_item_1, university.dnsDomains);
         universityDetailsDNSDomains.setAdapter(dnsDomainListAdapter);
 
         // set-up the websites
         websiteListAdapter = new ArrayAdapter<String>(this.getActivity(),
-          android.R.layout.simple_list_item_1, android.R.id.text1, university.websites);
+          android.R.layout.simple_list_item_1, university.websites);
         universityDetailsDNSDomains.setAdapter(websiteListAdapter);
     }
 

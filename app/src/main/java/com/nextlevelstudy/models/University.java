@@ -26,6 +26,7 @@ public class University implements Parcelable {
   public int id;
 
   public String name;
+  @SerializedName(value = "countyCode")
   public String countryCode;
   public String countryName;
 
